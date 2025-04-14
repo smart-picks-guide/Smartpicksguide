@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +24,7 @@
     header {
       background-color: var(--main-blue);
       color: white;
-      padding: 1.5rem;
+      padding: 2rem 1rem;
       text-align: center;
     }
 
@@ -35,8 +34,26 @@
     }
 
     header h1 {
-      font-size: 2rem;
+      font-size: 2.5rem;
       margin: 0;
+    }
+
+    nav.categories {
+      background-color: white;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 1rem;
+      gap: 0.5rem;
+    }
+
+    nav.categories button {
+      background-color: var(--main-blue);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
     }
 
     .search-bar {
@@ -52,6 +69,13 @@
       border: 1px solid #ccc;
       border-radius: 10px;
       font-size: 1rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-top: 2rem;
+      color: var(--main-blue);
     }
 
     .products {
@@ -77,7 +101,7 @@
 
     .product-card img {
       max-width: 100%;
-      height: 160px;
+      height: 180px;
       object-fit: cover;
       border-radius: 12px;
     }
@@ -110,7 +134,8 @@
       background-color: var(--main-blue);
       color: white;
       text-align: center;
-      padding: 1rem;
+      padding: 1.5rem 1rem;
+      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -121,60 +146,56 @@
     <h1>Smart Picks Store</h1>
   </header>
 
+  <nav class="categories">
+    <button onclick="filterCategory('all')">All</button>
+    <button onclick="filterCategory('electronics')">Electronics</button>
+    <button onclick="filterCategory('fashion')">Fashion</button>
+    <button onclick="filterCategory('home')">Home & Kitchen</button>
+    <button onclick="filterCategory('tech')">Tech Accessories</button>
+    <button onclick="filterCategory('pets')">Pet Supplies</button>
+  </nav>
+
   <div class="search-bar">
     <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="Search products...">
   </div>
 
+  <h2 class="section-title">Top Picks</h2>
   <section class="products" id="productList">
-    <div class="product-card">
-      <img src="https://m.media-amazon.com/images/I/61CGHv6kmWL._AC_SL1500_.jpg" alt="Bluetooth Earbuds" />
-      <h3>Bluetooth Earbuds</h3>
-      <p class="price">$25</p>
-      <a href="https://example.com/earbuds" class="buy-btn" target="_blank">Buy Now</a>
-    </div>
-    <div class="product-card">
-      <img src="https://m.media-amazon.com/images/I/71fZ3j2W5rL._AC_SL1500_.jpg" alt="Smart Watch" />
-      <h3>Smart Watch</h3>
-      <p class="price">$45</p>
-      <a href="https://example.com/smartwatch" class="buy-btn" target="_blank">Buy Now</a>
-    </div>
-    <div class="product-card">
-      <img src="https://m.media-amazon.com/images/I/61Z6B6p5x6L._AC_SL1500_.jpg" alt="Power Bank" />
-      <h3>Power Bank</h3>
-      <p class="price">$30</p>
-      <a href="https://example.com/powerbank" class="buy-btn" target="_blank">Buy Now</a>
-    </div>
-    <div class="product-card">
-      <img src="https://m.media-amazon.com/images/I/71Zf9uUp+GL._AC_SL1500_.jpg" alt="Portable Speaker" />
-      <h3>Portable Speaker</h3>
-      <p class="price">$35</p>
-      <a href="https://example.com/speaker" class="buy-btn" target="_blank">Buy Now</a>
-    </div>
-    <div class="product-card">
-      <img src="https://m.media-amazon.com/images/I/71R0bBESwUL._AC_SL1500_.jpg" alt="HD Webcam" />
-      <h3>HD Webcam</h3>
-      <p class="price">$50</p>
-      <a href="https://example.com/webcam" class="buy-btn" target="_blank">Buy Now</a>
-    </div>
-    <div class="product-card">
-      <img src="https://m.media-amazon.com/images/I/71c5U20CGiL._AC_SL1500_.jpg" alt="Mechanical Keyboard" />
-      <h3>Mechanical Keyboard</h3>
-      <p class="price">$70</p>
-      <a href="https://example.com/keyboard" class="buy-btn" target="_blank">Buy Now</a>
-    </div>
-    <div class="product-card">
-      <img src="https://m.media-amazon.com/images/I/71c5U20CGiL._AC_SL1500_.jpg" alt="Mechanical Keyboard" />
-      <h3>fahed notayf</h3>
-      <p class="price">$700</p>
-      <a href="https://example.com/keyboard" class="buy-btn" target="_blank">Buy Now</a>
-    </div>
+    <!-- Product cards will be injected here -->
   </section>
 
   <footer>
-    &copy; 2025 Smart Picks Guide. All rights reserved.
+    &copy; 2025 Smart Picks Guide. All rights reserved. | <a href="#" style="color: #FFC72C; text-decoration: underline;">Privacy Policy</a> | <a href="#" style="color: #FFC72C; text-decoration: underline;">Terms</a>
   </footer>
 
   <script>
+    const products = [
+      { title: "Wireless Bluetooth Earbuds", price: "$25", category: "electronics", image: "https://m.media-amazon.com/images/I/61CGHv6kmWL._AC_SL1500_.jpg", link: "https://example.com/earbuds" },
+      { title: "Casual Summer Dress", price: "$19", category: "fashion", image: "https://ae01.alicdn.com/kf/S5c0ae6a091e9428eae2cf52a0d4fcf4bF.jpg", link: "https://example.com/dress" },
+      { title: "LED Kitchen Light", price: "$12", category: "home", image: "https://ae01.alicdn.com/kf/S3b10eb8ffde94be48c0071bbdccfc1a6M.jpg", link: "https://example.com/light" },
+      { title: "Laptop Cooling Pad", price: "$18", category: "tech", image: "https://ae01.alicdn.com/kf/S865ae362930a4aa6ab60ddc6d203b7b38.jpg", link: "https://example.com/cooling" },
+      { title: "Pet Grooming Brush", price: "$7", category: "pets", image: "https://ae01.alicdn.com/kf/H969f13fc43fa43f7b198e9a723378c0a3.jpg", link: "https://example.com/brush" },
+      { title: "Smart Watch 2024", price: "$39", category: "electronics", image: "https://m.media-amazon.com/images/I/71fZ3j2W5rL._AC_SL1500_.jpg", link: "https://example.com/watch" },
+      { title: "Men's Wallet Leather", price: "$15", category: "fashion", image: "https://ae01.alicdn.com/kf/S72f240c25817484895f91c7687fce67aI.jpg", link: "https://example.com/wallet" },
+      { title: "Portable Blender", price: "$28", category: "home", image: "https://ae01.alicdn.com/kf/H0fa7592e1f3a4f2b994b0ecb8c00e1c6W.jpg", link: "https://example.com/blender" }
+    ];
+
+    function renderProducts(filter = "all") {
+      const list = document.getElementById("productList");
+      list.innerHTML = "";
+      products.filter(p => filter === "all" || p.category === filter)
+              .forEach(product => {
+        list.innerHTML += `
+          <div class="product-card">
+            <img src="${product.image}" alt="${product.title}" />
+            <h3>${product.title}</h3>
+            <p class="price">${product.price}</p>
+            <a href="${product.link}" class="buy-btn" target="_blank">Buy Now</a>
+          </div>
+        `;
+      });
+    }
+
     function searchProducts() {
       let input = document.getElementById("searchInput").value.toLowerCase();
       let cards = document.querySelectorAll(".product-card");
@@ -183,6 +204,13 @@
         card.style.display = title.includes(input) ? "block" : "none";
       });
     }
+
+    function filterCategory(category) {
+      renderProducts(category);
+    }
+
+    // Load all by default
+    renderProducts();
   </script>
 </body>
 </html>
